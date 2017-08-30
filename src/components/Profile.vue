@@ -40,13 +40,11 @@
 				text-align: center;
 				input{
 					width:80px;
-					font-size: 20px;
+					font-size: 16px;
 					outline: none;
 					user-select: none;
-					border-radius: 20px;
+					border-radius: 15px;
 					border:none;
-					background-color: $white;
-					color: $black-bg;
 					transition:0.5s;
 					&:hover{
 						background-color: $black-bg;

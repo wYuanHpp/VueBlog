@@ -22,17 +22,23 @@
 	@import "../assets/theme/theme.scss";
 	#bloglistcontent{
 			width:100%;
+			cursor: pointer;
+			&:hover .blogpreview-title{
+					color:$red !important;
+			}
 			.blogpreview{
 				position: relative;
 				width: 900px;
-				height: 150px;
+				height: 130px;
 				background: $white;
 				margin: 15px auto 65px;
 				padding:8px 0 0 0;
+				font-size:16px;
 				.blogpreview-title{
 					padding:0 5px; 
 					color: $black-bg;
 					text-align: right;
+
 					
 				}
 				.blogpreview-abstract{

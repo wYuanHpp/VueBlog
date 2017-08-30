@@ -7,7 +7,7 @@
 		</div>
 		<div id="sidebar_author">
 			<router-link class="author" to="/profile"><i class="fa fa-user" ></i></router-link>	
-			<router-link class="login" to="/contact"><i class="fa fa-sign-in"></i></router-link>
+			<router-link class="login" to="/login"><i class="fa fa-sign-in"></i></router-link>
 		</div>	
 	</div>
 </template>

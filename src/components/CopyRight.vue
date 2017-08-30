@@ -1,6 +1,6 @@
 <template>
 	<div id="copyright">
-		<p>copy-right 来自于汪源</p>
+		<p>copy-right wYuanHpp</p>
 	</div>
 </template>
 <style rel="stylesheet/scss" lang='scss'>
