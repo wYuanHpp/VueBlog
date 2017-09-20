@@ -4,29 +4,32 @@
            <div class="manageBlog">
                <div class="manageBlogTitle">title</div>
                <div class="manageToolBar">
-                   <button>
+                   <router-link tag="button" to="/manage/blogedit/:id">
                        <i class="fa fa-edit"></i>编辑
-                   </button>
-                   <button>
+                   </router-link>
+                   <router-link tag="button" to="/manage/comment/:id">
                        <i class="fa fa-comment">评论</i>
-                   </button>
+                   </router-link>
                </div>
            </div>
        </div>
        <div  class="manageEditorWrap">
-           <editor></editor>
+           <!--<editor width="90%" height="100%"></editor>-->
+           <manage-blog-edit></manage-blog-edit>
+            <router-view></router-view>
        </div>
    </div>
 </template>
 <script>
     import editor from '../bases/editormd.vue'
+    import manageBlogEdit from './ManageBlogEdit.vue'
     export default {
     	data(){
     		return {
             }
         },
 	    components:{
-    		editor
+            manageBlogEdit
         }
     }
 </script>
@@ -40,7 +43,7 @@
         position: relative;
         float: left;
         margin-left:54px;
-        width: calc(50% - 54px);
+        width: calc(40% - 54px);
         height:100%;
     }
     .manageBlog{
@@ -70,9 +73,13 @@
         position: absolute;
         top:0;
         right:0;
-        margin-left:20px;
-        width:calc(50% - 20px);
-        height: 100%;
+        margin:{
+            left:20px;
+            top: 20px;
+            bottom:20px;
+        };
+        width:calc(60% - 20px);
+        height: calc(100% - 40px);
         #editormd{
             position: absolute;
             top:0;

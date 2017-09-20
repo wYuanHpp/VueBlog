@@ -11,6 +11,7 @@
 	export default {
 		name: 'Editor',
 		props: {
+			height:'',
 			width: '',
 			content:{
 				type: String,
@@ -26,15 +27,15 @@
 			},
 			editorPath: {
 				type: String,
-				default: 'src/assets/lib/editor.md/'
+				default: 'node_modules/editor.md/'
 			},
 			editorConfig: {
 				type: Object,
 				default() {
 					return {
 						width: this.width,
-						height: 530,
-						path: 'src/assets/lib/editor.md/lib/',
+						height: this.height,
+						path: 'node_modules/editor.md/lib/',
 						codeFold: true,
 						saveHTMLToTextarea: true,
 						searchReplace: true,
@@ -55,10 +56,9 @@
 		computed: {
 		},
 		mounted() {
-			console.log('mounted')
 			//加载依赖
 			$s([
-				`src/assets/lib/jquery/dist/jquery.min.js`,
+				`node_modules/jquery/dist/jquery.min.js`,
 				`${this.editorPath}/lib/marked.min.js`,
 				`${this.editorPath}/lib/prettify.min.js`,
 				`${this.editorPath}/lib/raphael.min.js`,
@@ -79,10 +79,8 @@
 				this.$nextTick((editorMD = window.editormd) => {
 					if (editorMD) {
 						if (this.type == 'editor'){
-							console.log('editor')
 							this.instance = editorMD(this.id, this.editorConfig);
 						} else {
-							console.log('html')
 							this.instance = editorMD.markdownToHTML(this.id, this.editorConfig)
 						}
 					}
