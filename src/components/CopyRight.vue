@@ -3,7 +3,7 @@
 		<p>copy-right wYuanHpp</p>
 	</div>
 </template>
-<style rel="stylesheet/scss" lang='scss'>
+<style rel="stylesheet/scss" lang='scss' scoped>
 	@import "../assets/theme/theme.scss";
 	#copyright {
 		width: 100%;

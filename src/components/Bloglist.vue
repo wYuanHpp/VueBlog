@@ -3,7 +3,7 @@
 		<bloglistcontent v-for="list in bloglist" :content="list"></bloglistcontent>
 	</div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 	@import "../assets/theme/theme.scss";
 	#bloglist{
 		position: absolute;

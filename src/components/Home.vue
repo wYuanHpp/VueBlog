@@ -3,9 +3,9 @@
 		<div id="home_title">
 			<h6>前端工程师-伪后端爱好者</h6>
 			<div id="title_loop">
-				<h4 :class='{"current": now == 1}'><span>Hello，</span><span class="blue" >我是Yuan</span></h4>
-				<h4 :class='{"current": now == 2}'><span>书山有路勤为径 </span><span class="blue" >学海无涯苦作舟</span></h4>
-				<h4 :class='{"current": now == 3}'><span class="blue">再不努力 </span><span  >我们就老了</span></h4>
+				<h4 :class='{"current": now == 1}'><span>text1</span><span class="blue" >text2</span></h4>
+				<h4 :class='{"current": now == 2}'><span>tex3 </span><span class="blue" >text4</span></h4>
+				<h4 :class='{"current": now == 3}'><span class="blue">text5 </span><span>text6</span></h4>
 			</div>
 		</div>
 		<div id="home_button">
@@ -106,6 +106,7 @@
 			transition:.3s;
 			&:hover{
 				background-color: $blue;
+				opacity:0.8;
 			}
 		}
 	}

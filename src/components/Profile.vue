@@ -39,6 +39,9 @@
 				width:100%;
 				text-align: center;
 				input{
+                    display: block;
+					float: left;
+					margin:10px 5px 0 5px;
 					width:80px;
 					font-size: 16px;
 					outline: none;

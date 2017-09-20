@@ -4,7 +4,7 @@ import tags from "./components/Tags.vue"
 import bloglist from './components/Bloglist.vue'
 import archive from './components/Archive.vue'
 import login from './components/Login.vue'
-
+import manage from './components/manage.vue'
 export default{
 	routes:[
 		{path:"/home",name:"home",component:home},
@@ -16,6 +16,7 @@ export default{
 				{path:'archive',name:"archive",component:archive},
 			]
 		},
+		{path:"/manage",component:manage},
 		{path:"/login",component:login},
 		{path:"*",redirect:"/home"}
 		

@@ -3,7 +3,7 @@
 		<div id="archivecontent"></div>
 	</div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 	@import "../assets/theme/theme.scss";
 	#archive{
 		position: absolute;

@@ -6,7 +6,9 @@
 			<router-link class="music" to="/music"><i class="fa fa-headphones" ></i></router-link>
 		</div>
 		<div id="sidebar_author">
-			<router-link class="author" to="/profile"><i class="fa fa-user" ></i></router-link>	
+			<router-link class="manage" to="/manage"><i class="fa fa-desktop" ></i></router-link>
+			<router-link class="author" to="/profile"><i class="fa fa-user" ></i></router-link>
+			<router-link class="logout" to="/profile"><i class="fa fa-sign-out" ></i></router-link>
 			<router-link class="login" to="/login"><i class="fa fa-sign-in"></i></router-link>
 		</div>	
 	</div>
@@ -17,7 +19,7 @@
 	}
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
 	@import "../assets/theme/theme.scss";
 	#sidebar {
 		position: fixed;

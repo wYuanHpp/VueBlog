@@ -1,0 +1,15 @@
+@import "variables";
+@mixin btn-default {
+  margin:10px 5px;
+  width:80px;
+  font-size: 16px;
+  outline: none;
+  user-select: none;
+  border-radius: 15px;
+  border:none;
+  transition:0.5s;
+  &:hover{
+    background-color: $black-bg;
+    color: $white;
+  }
+}

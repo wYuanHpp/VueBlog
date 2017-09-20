@@ -4,11 +4,10 @@ import Vuex from 'vuex';
 
 import App from './App.vue';
 import routerConfig from "./router.config.js";
-import store from './store' 
+import store from './store'
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
-
 const router = new VueRouter(routerConfig );
 /*const store = new Vuex.Store({
 	state:{
@@ -33,5 +32,6 @@ var vm = new Vue({
 	router,
 	el: '#app',
 	render: h => h(App),
-
+	components:{
+	}
 })

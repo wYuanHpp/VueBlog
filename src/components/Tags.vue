@@ -4,7 +4,7 @@
 
 	</div>
 </template>
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
 	@import "../assets/theme/theme.scss";
 	#tags{
 		position: absolute;
