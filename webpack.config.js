@@ -52,10 +52,27 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js'
     }
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
+	devServer: {
+		historyApiFallback: true,
+		port: 8000,
+		proxy:{
+			"/api": {
+				target: 'http://localhost:3000/',
+				changeOrigin: true,
+				secure: false
+			}
+		}
+	},
+  // devServer: {
+  //   historyApiFallback: true,
+  //   noInfo: true,
+	//   proxy: {
+	// 	  '/api/*': {
+	// 		  target: 'https://localhost:3000',
+	// 		  changeOrigin: true
+	// 	  }
+	//   }
+  // },
   performance: {
     hints: false
   },

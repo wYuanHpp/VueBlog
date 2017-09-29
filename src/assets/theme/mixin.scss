@@ -13,3 +13,34 @@
     color: $white;
   }
 }
+@mixin btn-small {
+  margin:{
+    left:5px;
+    right:5px;
+  };
+  width:70px;
+  font-size: 12px;
+  outline: none;
+  user-select: none;
+  border-radius: 12px;
+  border:none;
+  transition:0.5s;
+  &:hover{
+    background-color: $black-bg;
+    color: $white;
+  }
+}
+
+@mixin input(){
+  margin:{
+    left:4px;
+  }
+  padding:{
+    left:10px;
+  }
+  widht:200px;
+  height:24px;
+
+  outline:none;
+  font-size: 14px;
+}

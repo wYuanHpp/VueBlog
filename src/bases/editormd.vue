@@ -1,6 +1,6 @@
 <template>
     <div :id="id" class="main-editor">
-        <textarea v-model="content"></textarea>
+        <!--<textarea v-model="content" value="123321"></textarea>-->
     </div>
 </template>
 
@@ -35,15 +35,26 @@
 					return {
 						width: this.width,
 						height: this.height,
+						watch : false,
+						toolbarIcons : function() {
+							return ["undo", "redo", "|", "bold", "hr", "|", "watch"]
+						},
+						disabledKeyMaps : [
+							"Ctrl-K","Ctrl-F","Ctrl-B","Ctrl-E", "F11", "F10"  // disable some default keyboard shortcuts handle
+						],
 						path: 'node_modules/editor.md/lib/',
 						codeFold: true,
 						saveHTMLToTextarea: true,
 						searchReplace: true,
 						htmlDecode: 'style,script,iframe|on*',
 						emoji: true,
-						onload: () => {
-							console.log('onload');
-						},
+                        onchange: () => {
+							console.log("change")
+                        },
+                        onload:() => {
+							console.log(this)
+							this.$emit('isloaded');
+                        }
 					};
 				},
 			},
@@ -53,8 +64,14 @@
 				instance: null,
 			};
 		},
-		computed: {
-		},
+	    watch:{
+		    content(newVal,oldVal){
+		        if(newVal !== oldVal){
+		        	console.log('change')
+		            this.instance.setMarkdown(newVal);
+                }
+            }
+        },
 		mounted() {
 			//加载依赖
 			$s([
@@ -73,6 +90,7 @@
 
 		},
 		beforeDestroy() {
+
 		},
 		methods: {
 			initEditor() {
@@ -85,7 +103,10 @@
 						}
 					}
 				});
-			}
+			},
+            getContent(){
+				return this.instance.getMarkdown();
+            }
 		},
 	};
 </script>

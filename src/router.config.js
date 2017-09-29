@@ -5,6 +5,7 @@ import bloglist from './components/Bloglist.vue'
 import archive from './components/Archive.vue'
 import login from './components/Login.vue'
 import manage from './components/manage.vue'
+import ManageBlogEdit from './components/ManageBlogEdit.vue'
 export default{
 	routes:[
 		{path:"/home",name:"home",component:home},
@@ -16,7 +17,12 @@ export default{
 				{path:'archive',name:"archive",component:archive},
 			]
 		},
-		{path:"/manage",component:manage},
+		{path:"/manage",component:manage,
+			children:[
+				{path:'blogedit/:id',name:'blogedit',component:ManageBlogEdit},
+				{path:'commentmanage',name:'commentmanage',component:ManageBlogEdit},
+			]
+		},
 		{path:"/login",component:login},
 		{path:"*",redirect:"/home"}
 		
