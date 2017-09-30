@@ -54,6 +54,7 @@
                         onload:() => {
 							console.log(this)
 							this.$emit('isloaded');
+							this.instance.setMarkdown(this.content)
                         }
 					};
 				},
@@ -68,7 +69,9 @@
 		    content(newVal,oldVal){
 		        if(newVal !== oldVal){
 		        	console.log('change')
-		            this.instance.setMarkdown(newVal);
+                    if(this.instance){
+	                    this.instance.setMarkdown(newVal);
+                    }
                 }
             }
         },
@@ -81,7 +84,6 @@
 				`${this.editorPath}/lib/raphael.min.js`,
 				`${this.editorPath}/lib/underscore.min.js`,
 			], () => {
-				console.log('finish load js')
 				$s(`${this.editorPath}editormd.js`, () => {
 					console.log('init Editor')
 					this.initEditor();
