@@ -7,17 +7,18 @@ const getAllBlogsAbstract = require('./src/api/getAllBlogsAbstract');
 const getOneBlog = require('./src/api/getOneBlog') ;
 const createBlog = require('./src/api/createBlog');
 const delBlogById = require('./src/api/delBlogById');
+const updateBlog = require('./src/api/updateBlog');
 const port = process.env.port | 3000;
 
 const router = new Router();
 const app = new Koa();
-
 
 router.get('/api/getallblogsabstract', getAllBlogsAbstract);
 router.get('/api/getallblogs', getAllBlogs);
 router.post('/api/getoneblog', getOneBlog);
 router.post('/api/createblog', createBlog);
 router.del('/api/delblogbyid', delBlogById);
+router.post('/api/updateblog', updateBlog);
 
 app.use(logger());
 app.use(bodyParser());

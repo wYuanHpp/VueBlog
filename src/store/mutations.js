@@ -1,5 +1,10 @@
+import type from "./type"
 export default {
-	increment(state){
-		state.count++;
+	
+	[type.OPEN_MODAL](state){
+		state.isModalOpen = true;
+	},
+	[type.CLOSE_MODAL](state){
+		state.isModalOpen = false;
 	}
 }

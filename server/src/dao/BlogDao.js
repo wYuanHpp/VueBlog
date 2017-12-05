@@ -11,7 +11,7 @@ const Tag = dataBase.define('Tag' , {
 Blog.hasMany(Tag);
 Tag.belongsTo(Blog);
 
-module.exports.create = async function(blog,tags){
+async function create(blog,tags){
 	await dataBase.sync();
 	let isSuc = false;
 	try{
@@ -26,14 +26,14 @@ module.exports.create = async function(blog,tags){
 	return isSuc;
 };
 
-module.exports.getAll = async function() {
+async function getAll() {
 	var blogs = await Blog.findAll({
 		'include': [Tag]
 	});
 	return blogs;
 };
 
-module.exports.getAllAbstract = async function() {
+async function getAllAbstract() {
 	var blogs = await Blog.findAll({
 		include:[Tag],
 		attributes:['title', 'description', 'id', 'createdAt', 'updatedAt']
@@ -41,7 +41,7 @@ module.exports.getAllAbstract = async function() {
 	return blogs;
 };
 
-module.exports.getOne = async function(id) {
+async function getOne(id) {
 	let blog = await Blog.findAll({
 		include:[Tag],
 		where:{
@@ -51,7 +51,7 @@ module.exports.getOne = async function(id) {
 	return blog;
 };
 
-module.exports.delById = async function(id) {
+async function delById(id) {
 	var isSuc = false;
 	//通过id查找数据
 	let blog = await Blog.findAll({
@@ -68,4 +68,34 @@ module.exports.delById = async function(id) {
 	return isSuc;
 };
 
+async function update(obj) {
+	var isSuc = false;
+	var _blog = (await getOne(obj.id))[0];
+	var tem = {};
+	var id = obj.id;
+	var tags = obj.tags.slice();
+	console.log(_blog)
+	delete obj.id;
+	delete obj.tags;
+	try{
+		await Blog.update(obj,{
+			where:{id:id}
+		});
+		_blog.Tags.forEach(async tag => await tag.destroy());
+		console.log(tags)
+		await tags.forEach(async el=>{
+			await _blog.createTag({tag:el});
+		});
+		isSuc = true;
+	}catch(err){
+	
+	}
+	return isSuc;
+}
 
+module.exports.create = create;
+module.exports.getAll = getAll;
+module.exports.getAllAbstract = getAllAbstract;
+module.exports.getOne = getOne;
+module.exports.delById = delById;
+module.exports.update = update;

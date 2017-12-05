@@ -7,16 +7,17 @@
         <router-view></router-view>
       </keep-alive>
     </transition>
-     
+
+    <modal></modal>
   </div>
 </template>
 
 <script>
 import sidebar from "./components/SideBar.vue"
-
+import modal from "./components/modal.vue"
 export default {
   name: 'app',
-  components:{sidebar,},
+  components:{sidebar,modal},
   data () {
     return {
 

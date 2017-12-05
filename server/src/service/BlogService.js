@@ -2,8 +2,8 @@ const BlogDao = require('../dao/BlogDao');
 
 function handleData(blogs) {
 	let respone = [];
+	console.log(blogs)
 	blogs.forEach(blog => {
-		console.log(blog);
 		let obj = {};
 		blog.content &&	(obj.content = blog.content);
 		blog.title && (obj.title = blog.title);
@@ -50,8 +50,11 @@ module.exports = {
 		console.log("query:",param)
 		let id = param.id;
 		return isSuc = await BlogDao.delById(id);
+	},
+	
+	async update(param) {
+		console.log("query:",param)
+		return isSuc = await BlogDao.update(param);
 	}
-	
-	
 	
 }

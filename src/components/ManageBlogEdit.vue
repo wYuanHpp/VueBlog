@@ -10,7 +10,7 @@
                     </div>
                     <transition-group tag="div" name="list-tags" class="tags-container">
                         <span v-for="tag in tags" :key="tag" class="list-tags-item">{{tag}}<i class="fa fa-times-circle" @click="removeTag(tag)"></i></span>
-
+                        <!--<span v-for="tag in tags" :key="tag" class="list-tags-item">{{tag}}</span>-->
                     </transition-group>
                 </div>
             </div>
@@ -38,9 +38,12 @@
 <script>
 	import editor from '../bases/editormd.vue'
     import manage from '../api/manage';
+	import {mapMutations} from 'vuex';
+	import type from '../store/type';
 	export default {
 		data(){
 			return {
+				id:'',
 				content:'',
                 title:'',
                 tag:'',
@@ -63,9 +66,11 @@
 					this.replace();
 				}else{
 				this.fetchBlog(id);
+				this.id = parseInt(id);
 				}
 		},
         methods:{
+            ...mapMutations([type.OPEN_MODAL, type.CLOSE_MODAL]),
 		    fileUpload(){
 		    	this.$refs.fileUpload.click();
             },
@@ -88,7 +93,12 @@
                 	if(this.tag === "") return;
                     this.tags.push(this.tag);
                 }
+                console.log(this.$store.state)
                 this.tag = '';
+                var self = this
+                window.remove = function(){
+                	self.tags.splice(1,1);
+                }
             },
             removeTag(tag){
                this.tags.splice(this.tags.indexOf(tag),1);
@@ -106,7 +116,19 @@
                 })
             },
             update(){
-
+	            let data = {
+	            	id:this.id,
+		            title:this.title,
+		            description:this.description,
+		            tags:this.tags,
+		            content:this.$refs.editor.getContent(),
+	            }
+	            console.log(data)
+	            manage.updateBlog(data).then(data =>{
+	            	if(data.code === 0 ){
+			            this.$emit('save',data)
+                    }
+	            })
             },
             fetchBlog(id){
 		            this.new = false;
@@ -140,6 +162,7 @@
 		watch:{
 			'$route'(to, from){
 				let id = to.params.id;
+				this.id = id;
 				if(from.name === 'blogedit'){
 					this.isLoaded = false;
                     if(id == 'new'){
@@ -215,10 +238,9 @@
             margin-top: 10px;
 
             span{
-                display:block;
-                position: relative;
+                display: inline-block;
                 line-height:14px;
-                float: left;
+                /*float: left;*/
                 padding:{
                     left:10px;
                     right:10px;
@@ -272,6 +294,8 @@
         }
     }
     .list-tags-item {
+        display: inline-block;
+        position: relative;
         transition: all .7s;
         margin-right: 10px;
     }
@@ -283,4 +307,5 @@
     .list-tags-leave-active {
         position: absolute;
     }
+
 </style>

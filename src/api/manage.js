@@ -34,5 +34,14 @@ export default{
 				.then(data => resolve(data.data))
 				.catch(err => reject(err));
 		})
+	},
+	
+	updateBlog(data) {
+		return new Promise((resolve, reject) => {
+			axios.post('api/updateblog',data)
+				.then(data => resolve(data.data))
+				.catch(err => reject(err));
+		})
+
 	}
 }

@@ -7,7 +7,7 @@
                </router-link>
            </div>
            <transition-group name="list-complete" class="bloglist" tag="ul">
-               <li ref="blogs"  v-for="blog in this.blogList" :key="blog" class="manageBlog list-complete-item">
+               <li ref="blogs"  v-for="blog in this.blogList" :key="blog.id" class="manageBlog list-complete-item">
                    <div class="manageBlogTitle">{{blog.title}}</div>
                    <div class="manageToolBar">
                        <keep-alive>
@@ -54,6 +54,7 @@
 			        .then((data) => {
 				        console.log(data.data);
 				        this.blogList = data.data;
+				        console.log(this.blogList)
 			        })
             },
             delBlog(id, blog){

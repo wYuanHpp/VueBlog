@@ -1,5 +1,5 @@
 export default {
-	isCount: state => {
-		return state.count + 1;
+	isModalOpen: state => {
+		return state.isModalOpen;
 	}
 }
