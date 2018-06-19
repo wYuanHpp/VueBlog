@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '',
     filename: 'build.js'
   },
   module: {
@@ -28,7 +28,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        options: {
+          presets:['es2015']
+        }
       },
 	    {
 		    test: /\.css$/, // Only .css files
@@ -54,7 +57,7 @@ module.exports = {
   },
 	devServer: {
 		historyApiFallback: true,
-		port: 8000,
+		port: 8888,
 		proxy:{
 			"/api": {
 				target: 'http://localhost:3000/',
@@ -63,16 +66,6 @@ module.exports = {
 			}
 		}
 	},
-  // devServer: {
-  //   historyApiFallback: true,
-  //   noInfo: true,
-	//   proxy: {
-	// 	  '/api/*': {
-	// 		  target: 'https://localhost:3000',
-	// 		  changeOrigin: true
-	// 	  }
-	//   }
-  // },
   performance: {
     hints: false
   },

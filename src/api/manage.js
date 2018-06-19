@@ -1,7 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export default{
-	
+export default {
 	getAllBlogsAbstract(){
 		return new Promise((resolve, reject) => {
 			axios.get('/api/getallblogsabstract')
